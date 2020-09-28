@@ -12,6 +12,9 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
+    [Header("FirebaseInit Reference:")]
+    [SerializeField] private FirebaseInit firebaseInit;
+
     [Header("Score Manager Settings:")]
     [SerializeField] private int maxScoresQuantity = 10;
     [SerializeField] private bool useTestFeatures = false;
@@ -63,9 +66,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _database = FirebaseDatabase.DefaultInstance;
-        _ref = _database.GetReference(path: SCORELISTKEY);
-        _ref.ValueChanged += HandleValueChanged;
+        StartCoroutine(GetDatabaseReferenceCoroutine());
     }
 
     /// <summary>
@@ -84,6 +85,26 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    /// <summary>
+    /// A coroutine to get the reference for the database once Firebase is initialized.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator GetDatabaseReferenceCoroutine()
+    {
+        if (firebaseInit)
+        {
+            // Wait until firebaseInit.isFirebaseInitialized is true.
+            yield return new WaitUntil(() => firebaseInit.isFirebaseInitialized);
+
+            // Get database reference and subscribe value changes as an event
+            _database = FirebaseDatabase.DefaultInstance;
+            _ref = _database.GetReference(path: SCORELISTKEY);
+            _ref.ValueChanged += HandleValueChanged;
+        }
+        else
+            Debug.LogError("Could not find FirebaseInit object in the scene. Please add FirebaseInit to the scene to get database reference.");
     }
 
     /// <summary>

@@ -374,6 +374,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1369244415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9008828539586989088, guid: 99f1fe7ec9d1eee49a0d5f7ec61faff7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9008828537842488990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d077eef5dc9843040b93deb327e16be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1463470702 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3841062434984446874, guid: 5c9d7ea9f3ebf2a4eae92548401fc52f,
@@ -901,6 +913,16 @@ PrefabInstance:
       propertyPath: scoreListText
       value: 
       objectReference: {fileID: 1463470702}
+    - target: {fileID: 4190364481947119476, guid: a3d7e6754cfca43488a13bb338c05df1,
+        type: 3}
+      propertyPath: firebaseInit
+      value: 
+      objectReference: {fileID: 1369244415}
+    - target: {fileID: 4190364481947119476, guid: a3d7e6754cfca43488a13bb338c05df1,
+        type: 3}
+      propertyPath: useTestFeatures
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7422566805693376962, guid: a3d7e6754cfca43488a13bb338c05df1,
         type: 3}
       propertyPath: m_Name
